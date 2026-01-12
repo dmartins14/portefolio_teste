@@ -1,0 +1,5 @@
+Algoritmos de Alinhamento
+===========================
+
+.. automodule:: bioinf.alinhamento
+   :members:

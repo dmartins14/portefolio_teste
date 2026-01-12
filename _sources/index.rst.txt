@@ -1,0 +1,11 @@
+Portefólio - Algoritmos para análise de sequências biológicas
+===============================================================
+
+Este projeto contém funções para análise de sequências biológicas,
+incluindo processamento de DNA, RNA e algoritmos de alinhamento.
+
+.. toctree::
+   :maxdepth: 2
+
+   bioinf.sequencias
+   bioinf.alinhamento
