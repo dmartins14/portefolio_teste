@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Algoritmos de Alinhamento &#8212; Bioinf Portfolio 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Análise de Sequências" href="bioinf.sequencias.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-bioinf.alinhamento">
+<span id="algoritmos-de-alinhamento"></span><h1>Algoritmos de Alinhamento<a class="headerlink" href="#module-bioinf.alinhamento" title="Link to this heading">¶</a></h1>
+<p>Algoritmos de alinhamento de sequências biológicas.</p>
+<p>Este módulo implementa algoritmos de alinhamento global
+(Needleman–Wunsch), alinhamento local (Smith–Waterman)
+e alinhamento múltiplo progressivo.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="bioinf.alinhamento.alinhamento_progressivo">
+<span class="sig-prename descclassname"><span class="pre">bioinf.alinhamento.</span></span><span class="sig-name descname"><span class="pre">alinhamento_progressivo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seqs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mismatch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bioinf/alinhamento.html#alinhamento_progressivo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bioinf.alinhamento.alinhamento_progressivo" title="Link to this definition">¶</a></dt>
+<dd><p>Alinhamento múltiplo progressivo.</p>
+<p>O alinhamento múltiplo progressivo é construído de forma incremental.
+Inicialmente, as duas primeiras sequências são alinhadas utilizando o
+algoritmo de Needleman–Wunsch. Em seguida, é calculada uma sequência de
+consenso, que é alinhada sucessivamente com cada nova sequência. Sempre
+que surgem gaps no consenso, estes são propagados a todas as sequências
+já alinhadas, garantindo a consistência do alinhamento.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bioinf.alinhamento.dotplot">
+<span class="sig-prename descclassname"><span class="pre">bioinf.alinhamento.</span></span><span class="sig-name descname"><span class="pre">dotplot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seq2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bioinf/alinhamento.html#dotplot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bioinf.alinhamento.dotplot" title="Link to this definition">¶</a></dt>
+<dd><p>Dotplot para comparação de sequências.</p>
+<p>Este método compara duas sequências carácter a carácter, construindo uma
+matriz binária onde é assinalada a coincidência entre caracteres nas mesmas
+posições relativas. O dotplot permite identificar regiões de similaridade
+e padrões conservados entre sequências.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bioinf.alinhamento.needleman_wunsch_dna">
+<span class="sig-prename descclassname"><span class="pre">bioinf.alinhamento.</span></span><span class="sig-name descname"><span class="pre">needleman_wunsch_dna</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seq2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mismatch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bioinf/alinhamento.html#needleman_wunsch_dna"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bioinf.alinhamento.needleman_wunsch_dna" title="Link to this definition">¶</a></dt>
+<dd><p>Algoritmo de Needleman–Wunsch para alinhamento global.</p>
+<p>Este algoritmo realiza o alinhamento global de duas sequências utilizando
+programação dinâmica. Inicialmente é construída e preenchida uma matriz de
+scores com base em valores de match, mismatch e gap. De seguida, é efetuado
+um traceback que permite reconstruir o alinhamento ótimo, podendo introduzir
+gaps quando necessário.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bioinf.alinhamento.score_blosum">
+<span class="sig-prename descclassname"><span class="pre">bioinf.alinhamento.</span></span><span class="sig-name descname"><span class="pre">score_blosum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matriz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aa1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aa2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bioinf/alinhamento.html#score_blosum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bioinf.alinhamento.score_blosum" title="Link to this definition">¶</a></dt>
+<dd><p>Matriz de substituição e cálculo de score entre sequências.</p>
+<p>As matrizes de substituição permitem atribuir um score à substituição de
+um aminoácido por outro, refletindo a sua probabilidade evolutiva. Neste
+trabalho é utilizada a matriz BLOSUM62. Com base nesta matriz, é possível
+calcular o score total entre duas sequências de igual comprimento através
+da soma dos scores posição a posição.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bioinf.alinhamento.smith_waterman_dna">
+<span class="sig-prename descclassname"><span class="pre">bioinf.alinhamento.</span></span><span class="sig-name descname"><span class="pre">smith_waterman_dna</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seq2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mismatch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bioinf/alinhamento.html#smith_waterman_dna"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bioinf.alinhamento.smith_waterman_dna" title="Link to this definition">¶</a></dt>
+<dd><p>Algoritmo de Smith–Waterman para alinhamento local.</p>
+<p>O algoritmo de Smith–Waterman permite identificar as regiões de maior
+similaridade entre duas sequências. Tal como o Needleman–Wunsch, utiliza
+programação dinâmica, no entanto, os scores negativos são substituídos
+por zero, ficando o alinhamento restrito às regiões localmente mais semelhantes.</p>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Bioinf Portfolio</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bioinf.sequencias.html">Análise de Sequências</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Algoritmos de Alinhamento</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#bioinf.alinhamento.alinhamento_progressivo"><code class="docutils literal notranslate"><span class="pre">alinhamento_progressivo()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bioinf.alinhamento.dotplot"><code class="docutils literal notranslate"><span class="pre">dotplot()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bioinf.alinhamento.needleman_wunsch_dna"><code class="docutils literal notranslate"><span class="pre">needleman_wunsch_dna()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bioinf.alinhamento.score_blosum"><code class="docutils literal notranslate"><span class="pre">score_blosum()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bioinf.alinhamento.smith_waterman_dna"><code class="docutils literal notranslate"><span class="pre">smith_waterman_dna()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="bioinf.sequencias.html" title="previous chapter">Análise de Sequências</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/bioinf.alinhamento.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
